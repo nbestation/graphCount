@@ -39,15 +39,15 @@ int main(int argc, char* argv[]){
         switch  (opt){
             case 'r':
                 file_name = optarg;
-                cout << "Open " << file_name << endl;
+                //cout << "Open " << file_name << endl;
                 break;
             case 'P':
                 P = atoll(optarg);
-                cout << "P = " << P << endl;
+                //cout << "P = " << P << endl;
                 break;
             case 'Q':
                 Q = atoll(optarg);
-                cout << "Q = " << Q << endl;
+                //cout << "Q = " << Q << endl;
                 break;
             case 's':
                 sort_src = true;
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
     
 	vector<vector<int> > num(P, vector<int>(P,0));
     vector<vector<vector<struct edge> > > edge_list(P, vector<vector<struct edge> >(P, vector<struct edge>(0)));
-    cout<< "1" << endl;
+    //cout<< "1" << endl;
 	int raw_fd;
 	struct stat sb;
 	char* raw_mmap_ptr;
@@ -88,6 +88,12 @@ int main(int argc, char* argv[]){
 			last_pos=i+1;		
         }
 	}
+    for (int i=0; i<P; i++){
+        for (int j=0; j<P-1; j++)
+            cout << num[i][j] << ',';
+         cout << num[i][P-1];
+        if (i<P-1) cout << endl;
+    } 
 
     if (Q){//ForeGraph
         int K = int(double(P)/double(Q));
